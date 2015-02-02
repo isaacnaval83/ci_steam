@@ -73,14 +73,15 @@ create table juegos_so(
 drop table if exists biblioteca cascade;
 
 create table biblioteca(
-  usuarios_id  bigint  constraint fk_usuarios_id
-                        references usuarios(id)
-                        on delete no action
-                        on update cascade,
-  juegos_id   bigint  constraint fk_juegos_id
-                        references juegos(id)
-                        on delete no action
-                        on update cascade,
+  usuarios_id   bigint  constraint fk_usuarios_id
+                          references usuarios(id)
+                          on delete no action
+                          on update cascade,
+  juegos_id     bigint  constraint fk_juegos_id
+                          references juegos(id)
+                          on delete no action
+                          on update cascade,
+  fecha_compra  timestamp not null default current_timestamp,
 
   constraint pk_biblioteca primary key (usuarios_id, juegos_id)
 );
