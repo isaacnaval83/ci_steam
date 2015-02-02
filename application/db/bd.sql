@@ -5,7 +5,7 @@ create table roles(
   nombre_rol  varchar(10)  not null constraint uq_roles_nombre unique
 );
 
-drop table if exists desarrolladores;
+drop table if exists desarrolladores cascade;
 
 create table desarrolladores(
   id                     bigserial     constraint pk_desarrolladores primary key,
@@ -13,14 +13,16 @@ create table desarrolladores(
                                   constraint uq_desarrolladores_nombre unique
 );
 
-drop table if exists generos;
+drop table if exists generos cascade;
 
 create table generos(
   id              bigserial   constraint pk_generos primary key,
   nombre_genero   varchar(20) not null constraint uq_generos_genero unique
 );
 
-drop table if exists sistemas_operativos(
+drop table if exists sistemas_operativos cascade;
+
+create table sistemas_operativos(
   id        bigserial   constraint pk_sistemas_operativos primary key,
   nombre_so varchar(50) not null constraint uq_nombre_so unique
 );
@@ -53,7 +55,7 @@ create table juegos(
   precio            int           not null default 0
 );
 
-drop table if exists juegos_so;
+drop table if exists juegos_so cascade;
 
 create table juegos_so(
   so_id       bigint  constraint fk_sistemas_operativos_id
@@ -83,10 +85,10 @@ create table biblioteca(
   constraint pk_biblioteca primary key (usuarios_id, juegos_id)
 );
 
-drop table if exists generos_juegos:
+drop table if exists generos_juegos cascade;
 
 create table generos_juegos(
-  generos_id  bigint  constraint fk_generos_id,
+  generos_id  bigint  constraint fk_generos_id
                         references generos(id)
                         on delete no action
                         on update cascade,
@@ -97,18 +99,18 @@ create table generos_juegos(
   constraint pk_generos_juegos primary key (generos_id, juegos_id)
 );
 
-drop table if exists fotos;
+drop table if exists fotos cascade;
 
 create table fotos(
   id        bigserial     constraint pk_fotos_id primary key,
-  url       varchar(200)  not null constraint uq_fotos_url unique
+  url       varchar(200)  not null constraint uq_fotos_url unique,
   juegos_id bigint        constraint fk_juegos_id 
                             references juegos(id)
                             on delete no action
                             on update cascade
 );
 
-drop table if exists comentarios;
+drop table if exists comentarios cascade;
 
 create table comentarios(
   id                bigserial     constraint pk_comentarios primary key,
@@ -124,7 +126,7 @@ create table comentarios(
   fecha             timestamp     not null default current_timestamp
 );
 
-drop table if exists noticias;
+drop table if exists noticias cascade;
 
 create table noticias(
   id              bigserial     constraint pk_noticias primary key,
