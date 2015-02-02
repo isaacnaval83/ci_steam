@@ -2,22 +2,22 @@ drop table if exists roles cascade;
 
 create table roles(
   id   bigserial    constraint pk_roles primary key,
-  rol  varchar(10)  not null constraint uq_roles_nombre unique
+  nombre_rol  varchar(10)  not null constraint uq_roles_nombre unique
 );
 
 drop table if exists desarrolladores;
 
 create table desarrolladores(
-  id              bigserial     constraint pk_desarrolladores primary key,
-  desarrollador   varchar(50)   not null 
+  id                     bigserial     constraint pk_desarrolladores primary key,
+  nombre_desarrollador   varchar(50)   not null 
                                   constraint uq_desarrolladores_nombre unique
 );
 
 drop table if exists generos;
 
 create table generos(
-  id      bigserial   constraint pk_generos primary key,
-  genero  varchar(20) not null constraint uq_generos_genero unique
+  id              bigserial   constraint pk_generos primary key,
+  nombre_genero   varchar(20) not null constraint uq_generos_genero unique
 );
 
 drop table if exists sistemas_operativos(
@@ -111,23 +111,23 @@ create table fotos(
 drop table if exists comentarios;
 
 create table comentarios(
-  id            bigserial     constraint pk_comentarios primary key,
-  texto         varchar(500)  not null,
-  juegos_id     bigint        constraint fk_juegos_id
-                                references juegos(id)
-                                on delete no action
-                                on update cascade,
-  usuarios_id   bigint        constraint fk_usuarios_id
-                                references usuarios(id)
-                                on delete no action
-                                on update cascade,
-  fecha         timestamp     not null default current_timestamp
+  id                bigserial     constraint pk_comentarios primary key,
+  texto_comentario  varchar(500)  not null,
+  juegos_id         bigint        constraint fk_juegos_id
+                                    references juegos(id)
+                                    on delete no action
+                                    on update cascade,
+  usuarios_id       bigint        constraint fk_usuarios_id
+                                    references usuarios(id)
+                                    on delete no action
+                                    on update cascade,
+  fecha             timestamp     not null default current_timestamp
 );
 
 drop table if exists noticias;
 
 create table noticias(
-  id      bigserial     constraint pk_noticias primary key,
-  texto   varchar(1000) not null,
-  fecha   timestamp     not null default current_timestamp
+  id              bigserial     constraint pk_noticias primary key,
+  texto_noticia   varchar(1000) not null,
+  fecha           timestamp     not null default current_timestamp
 );
