@@ -1,5 +1,5 @@
 El usuario de este proyecto para la base de datos es:
 
-	Nombre de la db:	steam
-	Nombre del usuario:	steam
-	Contraseña del usuario:	steam
+	Nombre de la db:	stim
+	Nombre del usuario:	stim
+	Contraseña del usuario:	stim
