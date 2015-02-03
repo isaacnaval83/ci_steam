@@ -1,7 +1,7 @@
 drop table if exists roles cascade;
 
 create table roles(
-  id   bigserial    constraint pk_roles primary key,
+  id          bigserial    constraint pk_roles primary key,
   nombre_rol  varchar(10)  not null constraint uq_roles_nombre unique
 );
 
@@ -47,10 +47,11 @@ create table juegos(
   id                bigserial     constraint pk_juegos primary key,
   titulo            varchar(40)   not null constraint uq_juegos_titulo unique,
   desarrollador_id  bigint        constraint fk_desarrolladores_id
-                                    references desarrolladores(id) on delete
-                                      no action
-                                    on update cascade,
-  descripcion       varchar(500)  not null,
+                                    references desarrolladores(id)
+                                    on delete no action
+                                    on update cascade,     
+  caratula          bigint        ,
+  descripcion       text          not null,
   fecha_lanzamiento timestamp     not null default current_timestamp,
   precio            int           not null default 0
 );
@@ -100,16 +101,21 @@ create table generos_juegos(
   constraint pk_generos_juegos primary key (generos_id, juegos_id)
 );
 
-drop table if exists fotos cascade;
+drop table if exists multimedia cascade;
 
-create table fotos(
-  id        bigserial     constraint pk_fotos_id primary key,
-  url       varchar(200)  not null constraint uq_fotos_url unique,
-  juegos_id bigint        constraint fk_juegos_id 
-                            references juegos(id)
-                            on delete no action
-                            on update cascade
+create table multimedia(
+  id              bigserial     constraint pk_multimedia_id primary key,
+  url             varchar(200)  not null constraint uq_multimedia_url unique,
+  juegos_id       bigint        constraint fk_juegos_id 
+                                  references juegos(id)
+                                  on delete no action
+                                  on update cascade
 );
+
+ alter table juegos
+  add constraint fk_juegos_multimedia_caratula
+    foreign key (caratula)
+    references multimedia(id);
 
 drop table if exists comentarios cascade;
 
@@ -131,6 +137,11 @@ drop table if exists noticias cascade;
 
 create table noticias(
   id              bigserial     constraint pk_noticias primary key,
-  texto_noticia   varchar(1000) not null,
+  cabecera        varchar(100)  not null,
+  texto_noticia   text          not null,
+  juegos_id       bigint        constraint fk_juegos_id
+                                    references juegos(id)
+                                    on delete no action
+                                    on update cascade,
   fecha           timestamp     not null default current_timestamp
 );
