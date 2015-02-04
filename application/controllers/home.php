@@ -4,6 +4,9 @@ class Home extends CI_Controller {
 
     public function index()
     {
-        $this->load->view('/home/index');
+        $data['juegos'] = $this->Juego->destacados();
+        $data['noticias'] = $this->Noticia->ultimas();
+
+        $this->load->view('/home/index', $data);
     }
 }

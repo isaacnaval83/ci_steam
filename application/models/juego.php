@@ -2,9 +2,9 @@
 
 class Juego extends CI_Model 
 {
-
     public function destacados()
     {
-        
+        return $this->db->from('juegos')->where('destacado','true')
+               ->get()->result_array());
     }
 }
