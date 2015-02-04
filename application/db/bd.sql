@@ -64,7 +64,8 @@ create table juegos(
   caratula          bigint        ,
   descripcion       text          not null,
   fecha_lanzamiento timestamp     not null default current_timestamp,
-  precio            int           not null default 0
+  precio            int           not null default 0,
+  destacado         boolean       default false
 );
 
 drop table if exists juegos_so cascade;

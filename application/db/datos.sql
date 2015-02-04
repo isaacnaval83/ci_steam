@@ -33,17 +33,17 @@ insert into usuarios(nick, password, email, rol_id, valido)
 
 -------------------------------------------------------------------------JUEGOS
 insert into juegos(titulo, desarrollador_id, descripcion, fecha_lanzamiento,
-                   precio)
+                   precio, destacado)
           values('GTA V', 2, 'Juego mu chulo de matar', 
-              to_timestamp('05 11 2014', 'DD MM YYYY'), 60),
+              to_timestamp('05 11 2014', 'DD MM YYYY'), 60, true),
                 ('Skyrim', 4, 'Maravilla de la tecnología',
-              to_timestamp('11 11 2011', 'DD MM YYYY'),40),
+              to_timestamp('11 11 2011', 'DD MM YYYY'),40, false),
                 ('Candy Crush Online', 7, 'omg mac',
-              to_timestamp('05 07 2014', 'DD MM YYYY'), 2),
+              to_timestamp('05 07 2014', 'DD MM YYYY'), 2, true),
                 ('Red Dead Redemption', 2, 'Sandbox ambientado en el lejano Oeste', 
-                to_timestamp('05 05 2013', 'DD MM YYYY'), 39),
+                to_timestamp('05 05 2013', 'DD MM YYYY'), 39, true),
                 ('Far Cry', 6, 'Videojuego de disparos en primera persona', 
-                to_timestamp('05 05 2004', 'DD MM YYYY'), 14);
+                to_timestamp('05 05 2004', 'DD MM YYYY'), 14, false);
 ---------------------------------------------------------------------FIN JUEGOS
 
 ----------------------------------------------------------------------JUEGOS_SO
