@@ -22,13 +22,13 @@ insert into sistemas_operativos (nombre_so)
 --------------------------------------------------------FIN SISTEMAS OPERATIVOS
 
 -----------------------------------------------------------------------USUARIOS
-insert into usuarios(nick, password, email, rol_id)
-          values('admin', md5('admin'), 'admin@admin.com', 1),
-                ('farlopio', md5('farlopio'), 'farlopio@farlopio.com', 2),
-                ('pepe', md5('pepe'), 'pepe@pepe.com', 2),
-                ('juan', md5('juan'), 'juan@juan.com', 2),
-                ('maria', md5('maria'), 'maria@maria.com', 2),
-                ('antuan', md5('antuan'), 'antuan@antuan.com', 2);                
+insert into usuarios(nick, password, email, rol_id, valido)
+          values('admin', md5('admin'), 'admin@admin.com', 1, true),
+                ('farlopio', md5('farlopio'), 'farlopio@farlopio.com', 2, true),
+                ('pepe', md5('pepe'), 'pepe@pepe.com', 2, true),
+                ('juan', md5('juan'), 'juan@juan.com', 2, false),
+                ('maria', md5('maria'), 'maria@maria.com', 2, false),
+                ('antuan', md5('antuan'), 'antuan@antuan.com', 2, true);                
 -------------------------------------------------------------------FIN USUARIOS
 
 -------------------------------------------------------------------------JUEGOS
@@ -97,6 +97,12 @@ insert into noticias(cabecera, texto_noticia, juegos_id, fecha)
               ('Skyrim sale mañana', 'Sale mañana Skyrim', 2,
                 to_timestamp('10 11 2011', 'DD MM YYYY'));
 -------------------------------------------------------------------FIN NOTICIAS
+
+-------------------------------------------------------------------VALIDACIONES
+insert into validaciones_pendientes(usuarios_id, token)
+        values(4, md5('juan@juan.com'   || (floor(random() * 1000)))),
+              (5, md5('maria@maria.com' || (floor(random() * 1000))));
+---------------------------------------------------------------FIN VALIDACIONES
 
 --UPDATES
 update juegos set caratula = 1 where id = 1;

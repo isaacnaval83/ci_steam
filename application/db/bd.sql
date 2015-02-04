@@ -37,8 +37,19 @@ create table usuarios(
   email     varchar(32)   not null constraint ck_email_valido
                            check (email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$'),
   rol_id    bigint        constraint fk_roles_id
-                              references roles(id) on delete no action
-                              on update cascade
+                            references roles(id) on delete no action
+                            on update cascade,
+  valido    boolean       default false
+);
+
+drop table if exists validaciones_pendientes cascade;
+
+create table validaciones_pendientes(
+  usuarios_id bigint      constraint fk_usuarios
+                            references usuarios(id)
+                            on delete cascade
+                            on update cascade,
+  token       char(32)    constraint pk_validaciones_pendientes primary key
 );
 
 drop table if exists juegos cascade;
