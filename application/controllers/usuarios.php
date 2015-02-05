@@ -9,7 +9,7 @@ class Usuarios extends CI_Controller {
     		$password = $this->input->post('password');
 
     		if ($this->loguear($usuario,$password) == TRUE){
-    			redirect("/juego/index");
+    			redirect("/home/index");
     		}
     		else{
     			$data['error'] = true;
