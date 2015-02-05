@@ -20,7 +20,7 @@ class Noticia extends CI_Model
       return $res->result_array();
     }
 
-    public function buscar_noticias_por_id(id)
+    public function buscar_noticias_por_id($id)
     {
         $res = $this->db->where('id', $id)->get('noticias');
                                       
