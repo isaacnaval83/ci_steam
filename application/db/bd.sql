@@ -149,7 +149,7 @@ drop table if exists noticias cascade;
 
 create table noticias(
   id              bigserial     constraint pk_noticias primary key,
-  cabecera        varchar(100)  not null,
+  cabecera        varchar(500)  not null,
   texto_noticia   text          not null,
   juegos_id       bigint        constraint fk_juegos_id
                                     references juegos(id)

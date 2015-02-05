@@ -92,10 +92,51 @@ insert into comentarios(texto_comentario, juegos_id, usuarios_id, fecha)
 
 -----------------------------------------------------------------------NOTICIAS
 insert into noticias(cabecera, texto_noticia, juegos_id, fecha)
-        values('Salió el GTA V ', 'El GTA V salió', 1, 
+        values('En Take-Two todavía no están satisfechos con las ventas de 
+                  GTA V: “Hay mucho espacio todavía para crecer” ',
+                'La editora de GTA V, Take-Two, ha emitido un comunicado al hilo
+                  de la reciente noticia de las generosas ventas del título, que
+                  ha alcanzado las 45 millones de copias vendidas en todo el 
+                  mundo gracias al reciente lanzamiento de las versiones de 
+                  nueva generación.
+
+                  “Hay 45 millones de unidades vendidas, sí, pero todavía quedan 
+                  miles de millones de personas en la tierra que no tienen el 
+                  videojuego”, declaró Strauss Zelnick, principal ejecutivo de 
+                  la editora. “Hay mucho espacio todavía para crecer”.',
+                1, 
                 to_timestamp('05 11 2014', 'DD MM YYYY')),
-              ('Skyrim sale mañana', 'Sale mañana Skyrim', 2,
-                to_timestamp('10 11 2011', 'DD MM YYYY'));
+              ('Así sería un crossover entre Skyrim y LEGO', 
+                'Los videojuegos de LEGO han afrontado muchas franquicias de 
+                éxito, pero por ahora no les hemos visto sumergirse en la saga 
+                The Elder Scrolls. El equipo de The Guildmaster Studio, en 
+                cambio, ha pensado que esta sería una gran idea, y ha 
+                presentado un vídeo en el que dan forma a semejante idea.
+
+                Recrean, de hecho, la secuencia de introducción y primeros 
+                minutos de The Elder Scrolls V: Skyrim con técnica stop-motion. 
+                Se trata únicamente del primer episodio, y ya prometen un 
+                segundo que se publicará próximamente.', 
+                2,
+                to_timestamp('10 11 2011', 'DD MM YYYY')),
+              ('King graba el tema de Candy Crush Soda Saga con la Orquesta 
+                Sinfónica de Londres en Abbey Road',
+                'King, desarrolladores de Candy Crush Saga o Bubble Witch Saga, 
+                ha grabado el nuevo tema de Candy Crush Soda Saga, y para ello 
+                ha querido contar con los mejores músicos en el mejor estudio 
+                de grabación posible. Eso les ha llevado a contratar a 65 
+                músicos de la London Symphony Orchestra británica y grabarlos en
+                 los estudios Abbey Road, el icónico lugar en el que los 
+                 Beatles, entre otros, grabaron gran parte de sus discos.
+
+                El compositor de King, Johan Holmstrom, ha comentado que 
+                "la música grabada en Abbey Road eleva la experiencia de los 
+                jugadores de Candy Crush Soda Saga y da vida a su música". 
+                Según el músico de la orquesta sinfónica londinense, 
+                Gareth Davies, "tener una banda sonora grabada por un grupo 
+                real de músicos lleva Candy Crush Soda Saga al siguiente 
+                nivel".', 3,
+                to_timestamp('05 11 2014', 'DD MM YYYY'));
 -------------------------------------------------------------------FIN NOTICIAS
 
 -------------------------------------------------------------------VALIDACIONES

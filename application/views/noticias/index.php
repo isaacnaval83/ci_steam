@@ -7,16 +7,17 @@
 <body>
   <?php foreach($noticias as $noticia) { ?>
     <article>
-      <h1><a href="/noticias/ver/<?= $noticia['id']?>"><?= $noticia['cabecera'] ?></a></h1>
+      <h1><a href="noticias/ver/<?= $noticia['id']?>"><?= $noticia['cabecera'] ?></a></h1>
       <section>
         <?php
-          if(strlen($noticia['texto_noticia']) > 2){
-            $texto = substr($noticia['texto_noticia'], 0, 2);
+          $texto = $noticia['texto_noticia'];
+          if(strlen($texto) > 200){
+            $texto = substr($noticia['texto_noticia'], 0, 500);
             $texto .= '...';
           }
         ?>
         <?= $texto?>
-        <div><a href="/noticias/ver/<?= $noticia['id']?>">Leer más...</a></div>
+        <div><a href="noticias/ver/<?= $noticia['id']?>">Leer más...</a></div>
       </section>
     </article>
   <?php } ?>
