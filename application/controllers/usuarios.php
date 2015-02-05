@@ -21,10 +21,11 @@ class Usuarios extends CI_Controller {
     }
 
     private function loguear($usuario,$password){
-    	$id = $this->Usuario->id_segun_nick_y_password($usuario,$password);
+
+    	$id = $this->Usuario->id_segun_usuario_password($usuario,$password);
 
     	if ($id !== FALSE){
-    		$this->session->set_userdata('nick', $usuario);
+    		$this->session->set_userdata('usuario', $usuario);
     		$this->session->set_userdata('id',$id);
     		return TRUE; 
     	}
