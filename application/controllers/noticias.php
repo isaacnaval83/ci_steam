@@ -16,7 +16,7 @@ class Noticias extends CI_Controller {
 			redirect('noticias/index');
 		}
 
-		$data = $this->Noticias->buscar_noticias_por_id($id);
+		$data = $this->Noticia->buscar_noticias_por_id($id);
         
         if ($data != FALSE) 
         {
