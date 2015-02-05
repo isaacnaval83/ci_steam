@@ -4,7 +4,9 @@ class Noticias extends CI_Controller {
 
     public function index()
     {
+      $data['noticias'] = $this->Noticia->todas();
 
+      $this->load->view('/noticias/noticias', $data);
     } 
 
     public function ver(id)

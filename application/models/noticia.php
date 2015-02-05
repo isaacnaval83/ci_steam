@@ -11,4 +11,14 @@ class Noticia extends CI_Model
                                 offset 0');
         return $res->result_array();
     }
+
+    public function todas(){
+      $res = $this->db->query('select *
+                                 from noticias
+                                order by fecha');
+
+      return $res->result_array();
+    }
+
+
 }
