@@ -6,13 +6,13 @@ class Noticias extends CI_Controller {
     {
       $data['noticias'] = $this->Noticia->todas();
 
-      $this->load->view('/noticias/noticias', $data);
+      $this->load->view('/noticias/index', $data);
     } 
 
-    public function ver(id)
+    public function ver($id)
     {
-		if ($id == NULL) 
-        {
+		if ($id == NULL)
+    {
 			redirect('noticias/index');
 		}
 
