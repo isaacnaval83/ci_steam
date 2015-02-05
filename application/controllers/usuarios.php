@@ -5,27 +5,26 @@ class Usuarios extends CI_Controller {
     public function login()
     {
     	if ($this->input->post('login')){
-    		$nick = $this->input->post('nick');
+    		$usuario = $this->input->post('usuario');
     		$password = $this->input->post('password');
 
-    		if ($this->loguear($nick,$password) == TRUE){
+    		if ($this->loguear($usuario,$password) == TRUE){
     			redirect("/juego/index");
     		}
     		else{
     			$data['error'] = true;
     			$this->load->view('usuarios/login', $data);
     		}
-    	}
-    	else{
+    	}else{
     		$this->load->view('usuarios/login');
     	}
     }
 
-    private function loguear($nick,$password){
-    	$id = $this->Usuario->id_segun_nick_y_password($nick,$password);
+    private function loguear($usuario,$password){
+    	$id = $this->Usuario->id_segun_nick_y_password($usuario,$password);
 
     	if ($id !== FALSE){
-    		$this->session->set_userdata('nick', $nick);
+    		$this->session->set_userdata('nick', $usuario);
     		$this->session->set_userdata('id',$id);
     		return TRUE; 
     	}

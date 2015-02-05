@@ -2,8 +2,8 @@
 
 class Usuario extends CI_Model
 {
-	public function id_segun_nick_y_password($nick,$password){
-		return $this->id(array('nick' => $nick,
+	public function id_segun_nick_y_password($usuario,$password){
+		return $this->id(array('nick' => $usuario,
                                'password' => md5($password)));
 	}
 
