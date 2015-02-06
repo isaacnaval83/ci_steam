@@ -4,7 +4,16 @@ class Noticias extends CI_Controller {
 
     public function index()
     {
-      $data['noticias'] = $this->Noticia->todas();
+      $noticias = $this->Noticia->todas();
+
+      for($i = 0; $i < count($noticias); $i++){
+        if(strlen($noticias[$i]['texto_noticia']) > 200){
+          $noticias[$i]['texto_noticia'] = substr($noticias[$i]['texto_noticia'], 0, 200);
+          $noticias[$i]['texto_noticia'] .= '...';
+        }
+      }
+
+      $data['noticias'] = $noticias;
 
       $this->load->view('/noticias/index', $data);
     } 
