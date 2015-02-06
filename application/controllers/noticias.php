@@ -49,10 +49,9 @@ class Noticias extends CI_Controller {
           $this->load->view('noticias/resultados', $data);
         }else{
           $data['juego'] = $juegos[0];
-          $this->load->view('noticias/resultados/'.$juegos[0]['id'], $data)
+          $this->load->view('noticias/resultados/'.$juegos[0]['id'], $data);
         }
       }
-
 
     }
 }
