@@ -7,17 +7,17 @@ class Juegos extends CI_Controller {
 
     }
 
-    public function ver(id)
+    public function ver($id)
     {
 
     }
 
-    public function comentar(id)
+    public function comentar($id)
     {
 
     }
 
-    public function comprar(id)
+    public function comprar($id)
     {
         
     }
