@@ -6,7 +6,7 @@
   </head>
   <body>
     <?php if (isset($error)): ?>
-      <h2>Error: datos incorrectos</h2>
+      <h2>Error: los datos no son correctos</h2>
     <?php endif ?>
 
     <?= form_open('usuarios/login') ?>

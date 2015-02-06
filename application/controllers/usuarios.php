@@ -42,6 +42,25 @@ class Usuarios extends CI_Controller {
 
     public function singup()
     {
-        
+        if ($this->input->post('login')){
+            $usuario = $this->input->post('usuario');
+            $password = $this->input->post('password');
+            $confirm_password = $this->input->post('password_confirm');
+            $email = $this->input->post('email');
+
+            $reglas = array(
+                array(
+                      'field' => 'usuario',
+                      'label' => 'Usuario',
+                      'rules' => 'trim|required|max_length[15]|is_unique[usuarios.nick]'
+                    ),
+                
+                );
+        }
+        else
+        {
+            $this->load->view('usuarios/singup');
+        }
+       
     }
 }
