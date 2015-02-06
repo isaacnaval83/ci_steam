@@ -10,13 +10,9 @@
       <h1><a href="noticias/ver/<?= $noticia['id']?>"><?= $noticia['cabecera'] ?></a></h1>
       <section>
         <?php
-          $texto = $noticia['texto_noticia'];
-          if(strlen($texto) > 200){
-            $texto = substr($noticia['texto_noticia'], 0, 500);
-            $texto .= '...';
-          }
+          
         ?>
-        <?= $texto?>
+        <?= $noticia['texto_noticia']?>
         <div><a href="noticias/ver/<?= $noticia['id']?>">Leer más...</a></div>
       </section>
     </article>

@@ -6,6 +6,17 @@ class Noticias extends CI_Controller {
     {
       $data['noticias'] = $this->Noticia->todas();
 
+      foreach ($data['noticias'] as $key => $value) {
+        $texto = $value['texto_noticia'];
+
+        var_dump($value); die();
+
+        if(strlen($value['texto_noticia']) > 200){
+          $value['texto_noticia'] = substr($value['texto_noticia'], 0, 500);
+          $value['texto_noticia'] .= '...';
+        }
+      }
+
       $this->load->view('/noticias/index', $data);
     } 
 
