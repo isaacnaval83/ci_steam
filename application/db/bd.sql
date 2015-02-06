@@ -149,7 +149,7 @@ drop table if exists noticias cascade;
 
 create table noticias(
   id              bigserial     constraint pk_noticias primary key,
-  cabecera        varchar(100)  not null,
+  cabecera        varchar(500)  not null,
   texto_noticia   text          not null,
   juegos_id       bigint        constraint fk_juegos_id
                                     references juegos(id)
@@ -157,3 +157,26 @@ create table noticias(
                                     on update cascade,
   fecha           timestamp     not null default current_timestamp
 );
+
+drop view if exists vista_juegos;
+
+create view vista_juegos as 
+  select j.id, titulo, descripcion, 
+         to_char(fecha_lanzamiento, 'DD-MM-YYYY') as fecha, 
+         to_char(precio, '99D00 L') as precio, url, nombre_desarrollador 
+         from juegos j join multimedia m on j.caratula = m.id 
+                       join desarrolladores d on j.desarrollador_id = d.id;
+
+drop table if exists ci_sessions cascade;
+
+create table ci_sessions (
+  session_id    varchar(40)  not null default '0',
+  ip_address    varchar(45)  not null default '0',
+  user_agent    varchar(120) not null,
+  last_activity numeric(10)  not null default 0,
+  user_data     text         not null,
+  constraint pk_ci_sessions primary key (session_id)
+);
+
+create index last_activity_idx on ci_sessions (last_activity);
+
