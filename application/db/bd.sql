@@ -162,7 +162,7 @@ drop view if exists vista_juegos;
 
 create view vista_juegos as 
   select j.id, titulo, descripcion, 
-         to_char(fecha_lanzamiento, 'DD-MM-YYYY') as fecha, 
+         to_char(fecha_lanzamiento, 'DD-MM-YYYY') as fecha, destacado,
          to_char(precio, '99D00 L') as precio, url, nombre_desarrollador 
          from juegos j join multimedia m on j.caratula = m.id 
                        join desarrolladores d on j.desarrollador_id = d.id;
