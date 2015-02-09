@@ -7,7 +7,7 @@
     <p><?= $texto_noticia ?></p>
     <p>Fecha de la noticia: <?= $fecha ?></p>
 
-    <div><a href="/noticias/index.php">Volver</a></div>
+    <div><a href="noticias/index.php">Volver</a></div>
 
   </body>
 </html>
