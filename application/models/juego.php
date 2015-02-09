@@ -4,7 +4,10 @@ class Juego extends CI_Model
 {
     public function juego_por_id($id)
     {
-    	$res = $this->db->query("select j.id, j.titulo, j.caratula, j.descripcion, j.fecha_lanzamiento, j.precio, d.nombre_desarrollador from juegos j, desarrolladores d where j.id=d.id and j.id = ?", array($id));
+
+    	$res = $this->db->query("select j.id, j.titulo, j.caratula, j.descripcion, j.fecha_lanzamiento, j.precio, d.nombre_desarrollador, m.url 
+                                from juegos j, desarrolladores d, multimedia m 
+                                where j.id = m.juegos_id and j.id=d.id and j.id = ?", array($id));
                               
         return ($res->num_rows() > 0) ? $res->row_array() : FALSE;
     }

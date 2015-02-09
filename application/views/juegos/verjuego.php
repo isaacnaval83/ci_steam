@@ -44,6 +44,7 @@
 			-ms-flex-direction: column;
 			-o-flex-direction: column;
 			flex-direction: column;
+			margin-bottom: 25px;
 		}
 		div{
 			text-align: left;
@@ -55,6 +56,9 @@
 		label{
 			font-weight: bold;
 		}
+		img{
+			height: 300px;
+		}
 
 		</style>
 	</head>
@@ -62,7 +66,7 @@
 		<header><?= $juego['titulo'] ?></header>
 
 		<section>
-			<img src="../../../imagen/gtav.png">
+			<img src="<?= $juego['url'] ?>">
 			<div>
 				<label> Descripcion: </label>
 					<?= $juego['descripcion'] ?><br/>
