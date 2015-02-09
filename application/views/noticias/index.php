@@ -17,7 +17,7 @@
         <h1><a href="noticias/ver/<?= $noticia['id']?>"><?= $noticia['cabecera'] ?></a></h1>
         <section>
           <?=$noticia['texto_noticia']?>
-          <div><a href="noticias/ver/<?= $noticia['id']?>">Leer más...</a></div>
+          <div><?= anchor("noticias/ver/$noticia['id']", "Leer más...") ?></div>
         </section>
       </article>
     <?php } ?>
