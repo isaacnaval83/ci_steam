@@ -14,7 +14,7 @@
 
     <?php foreach($noticias as $noticia) { ?>
       <article>
-        <h1><a href="noticias/ver/<?= $noticia['id']?>"><?= $noticia['cabecera'] ?></a></h1>
+        <h1><?= anchor("noticias/ver/$noticia['id']", $noticia['cabecera']) ?></h1>
         <section>
           <?=$noticia['texto_noticia']?>
           <div><?= anchor("noticias/ver/$noticia['id']", "Leer más...") ?></div>
