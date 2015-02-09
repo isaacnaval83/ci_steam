@@ -13,4 +13,18 @@ class Usuario extends CI_Model
         $res = $this->db->select('id')->from('usuarios')->where($where)->get();
         return ($res->num_rows() > 0) ? $res->row()->id : FALSE;
     }
+
+    public function crear($usuario,$password,$email){
+    	$res = $this->db->query("insert into usuarios (nick,password,email,rol_id)
+    							 values (?, md5(?), ?,2)",
+    							 array($usuario, $password, $email));
+    }
+
+    public function meter_en_validaciones($id,$token){
+    	$res = $this->db->query("insert into validaciones_pendientes (usuarios_id,token)
+    							 values (?, ?)",
+    							 array($id, $token));
+    }
+
+  
 }

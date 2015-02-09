@@ -42,11 +42,12 @@ class Usuarios extends CI_Controller {
 
     public function singup()
     {
-        if ($this->input->post('login')){
+        if ($this->input->post('singup')){
             $usuario = $this->input->post('usuario');
             $password = $this->input->post('password');
-            $confirm_password = $this->input->post('password_confirm');
+            $confirm_password = $this->input->post('confirm_password');
             $email = $this->input->post('email');
+
 
             $reglas = array(
                 array(
@@ -54,8 +55,43 @@ class Usuarios extends CI_Controller {
                       'label' => 'Usuario',
                       'rules' => 'trim|required|max_length[15]|is_unique[usuarios.nick]'
                     ),
-                
+                array(
+                      'field' => 'password',
+                      'label' => 'Contraseña',
+                      'rules' => 'trim|required|matches[confirm_password]'
+                    ),
+                array(
+                      'field' => 'confirm_password',
+                      'label' => 'Confirmar Contraseña',
+                      'rules' => 'trim|required' 
+                    ),
+                array(
+                      'field' => 'email',
+                      'label' => 'Email',
+                      'rules' => 'trim|required|max_length[32]'
+                    )
                 );
+
+            $this->form_validation->set_rules($reglas);
+
+            if ($this->form_validation->run() == FALSE){
+                $this->load->view('usuarios/singup');
+
+            }
+            else{
+                if ($this->Usuario->crear($usuario,$password,$email) === FALSE){
+                    $data['error'] = "Error: No se ha creado el usuario";
+                    $this->load->view('usuarios/singup',$data);
+                }
+                else{
+                    $id = $this->Usuario->id_segun_usuario_password($usuario,$password);
+                    $token = md5(rand());
+                    $this->Usuario->meter_en_validaciones($id,$token);
+                    //select * from usuarios join validaciones_pendientes on usuarios.id = validaciones_pendientes.usuarios_id where usuarios.valido = false;
+                    $this->loguear($usuario,$password);
+                    redirect("/home/index");
+                }
+            }
         }
         else
         {

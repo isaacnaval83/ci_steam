@@ -17,8 +17,8 @@
       <?= form_submit('login', 'Entrar') ?>
     <?= form_close() ?>
 
-    <?= form_open('usuarios/crear') ?>
-      <?= form_submit('insertar', 'Crear cuenta') ?>
+    <?= form_open('usuarios/singup') ?>
+      <?= form_submit('insertar', 'Singup') ?>
     <?= form_close() ?>
   </body>
 </html>
