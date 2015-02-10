@@ -26,4 +26,13 @@ class Noticia extends CI_Model
                                       
         return ($res->num_rows() > 0) ? $res->row_array() : FALSE;
     }
+
+    public function por_juego($id){
+      $res = $this->db->query('select *
+                                 from noticias
+                                where juegos_id = ?
+                             order by fecha', [$id]);
+
+      return $res->result_array();
+    }
 }

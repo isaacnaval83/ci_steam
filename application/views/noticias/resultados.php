@@ -2,17 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Noticias</title>
+    <title>Resultados de Noticias</title>
   </head>
   <body>
-    <?= form_open("noticias/ver_noticias_juegos"); ?>
-      <?= form_input('juego', (isset($nomatches) ? $nomatches : '')); ?>
-      <?php if(isset($nomatches)) echo '<p>No existen resultados</p>'; ?>
-      <br/>
-      <?= form_submit('buscar', 'Buscar Noticias'); ?>
-    <?= form_close(); ?>
-    <hr/>
+  <?php 
 
+      var_dump($noticias); die(); ?>
     <?php foreach($noticias as $noticia) { ?>
       <article>
         <h1><?= anchor("noticias/ver/".$noticia['id'], $noticia['cabecera']) ?></h1>
