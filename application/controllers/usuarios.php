@@ -87,6 +87,7 @@ class Usuarios extends CI_Controller {
                     $id = $this->Usuario->id_segun_usuario_password($usuario,$password);
                     $token = md5(rand());
                     $this->Usuario->meter_en_validaciones($id,$token);
+                    $this->enviarCorreo($email);
                     //select * from usuarios join validaciones_pendientes on usuarios.id = validaciones_pendientes.usuarios_id where usuarios.valido = false;
                     $this->loguear($usuario,$password);
                     redirect("/home/index");
@@ -98,5 +99,23 @@ class Usuarios extends CI_Controller {
             $this->load->view('usuarios/singup');
         }
        
+    }
+
+    public function enviarCorreo($email){
+        $config['protocol'] = 'sendmail';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['validate'] = FALSE;
+
+        $this->load->library('email',$config);
+        $this->email->set_newline('\r\n');
+
+        $this->email->from('iesdonana@gmail.com');
+        $this->email->to($email);
+        $this->email->subject('Prueba');
+        $this->email->message('<a href="http://localhost/ci_steam/index.php/home/index">Confirmar validacion</a>');
+        $this->email->send();
+
+        echo $this->email->print_debugger();
     }
 }
