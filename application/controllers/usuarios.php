@@ -68,7 +68,7 @@ class Usuarios extends CI_Controller {
                 array(
                       'field' => 'email',
                       'label' => 'Email',
-                      'rules' => 'trim|required|max_length[32]'
+                      'rules' => 'trim|required|max_length[32]|valid_email'
                     )
                 );
 
