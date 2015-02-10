@@ -26,5 +26,18 @@ class Usuario extends CI_Model
     							 array($id, $token));
     }
 
+    public function biblioteca($usuario_id)
+    {
+        $res = $this->db->query("select j.id, titulo, url, descripcion, 
+                                        to_char(fecha_compra, 'DD-MM-YYYY')
+                                        as fecha_compra
+                                   from vista_juegos j
+                                   join biblioteca b on j.id = b.juegos_id
+                                  where usuarios_id = ?
+                               order by fecha_compra desc", array($usuario_id));
+
+        return $res->result_array();
+    }
+
   
 }
