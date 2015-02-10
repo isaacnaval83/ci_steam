@@ -4,7 +4,13 @@ class Juegos extends CI_Controller {
 
     public function index()
     {
-
+        $data['juegos']=$this->Juego->extraer_juegos();
+       // var_dump($data['juegos']);
+        if ($data!=FALSE) {
+           $this->load->view('juegos/index.php',$data);
+        }else{
+            echo "Error";
+        }
     }
 
 

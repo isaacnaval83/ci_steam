@@ -7,6 +7,7 @@
 <body>
     <h1>BIENVENIDOS A STIM</h1>
     <h2>Juegos destacados</h2>
+
     <?php foreach ($juegos as $juego):?>
         <img src="<?= $juego['url'] ?>">
         <h3><?= $juego['titulo'] ?></h3>

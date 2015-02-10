@@ -2,6 +2,17 @@
 
 class Juego extends CI_Model
 {
+    //funcion que extrae todos los juegos
+    public function extraer_juegos(){
+
+        //$res=$this->db->query("select * from juegos");
+        $res=$this->db->select('*')->from('juegos')->get();
+        
+        //return ($res->num_rows()>0) ? $res->row_array() : FALSE;
+        return ($res->num_rows()>0) ? $res->result_array() : FALSE;
+        //return ($res->num_rows()>0) ? $res : FALSE;
+
+    }
     public function juego_por_id($id)
     {
 
