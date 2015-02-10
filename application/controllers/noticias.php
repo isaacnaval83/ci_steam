@@ -13,8 +13,8 @@ class Noticias extends CI_Controller {
       }
 
       $data['noticias'] = $noticias;
-
-      foreach ($data['noticias'] as $key => $value) {
+      
+      foreach ($data['noticias'] as $key => $value){
         if(strlen($value['texto_noticia']) > 200){
           $value['texto_noticia'] = substr($value['texto_noticia'], 0, 500);
           $value['texto_noticia'] .= '...';
