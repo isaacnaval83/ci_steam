@@ -59,7 +59,7 @@ class Noticias extends CI_Controller {
         $this->load->view('noticias/resultados', $data);
       }else{
         foreach($juegos as $juego){
-          $noticias[] = $this->Noticia->por_juego($juego['id']);
+          $noticias = $this->Noticia->por_juego($juego['id']);
         }
 
       $data['noticias'] = $noticias;
