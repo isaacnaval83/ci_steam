@@ -136,7 +136,62 @@ insert into noticias(cabecera, texto_noticia, juegos_id, fecha)
                 Gareth Davies, "tener una banda sonora grabada por un grupo 
                 real de músicos lleva Candy Crush Soda Saga al siguiente 
                 nivel".', 3,
-                to_timestamp('05 11 2014', 'DD MM YYYY'));
+                to_timestamp('05 11 2014', 'DD MM YYYY')),
+              ('Aumentan los rumores sobre una segunda entrega de Red Dead 
+                Redemption ya en desarrollo',
+                'Cuando se acercan fechas de grandes anuncios, como es el caso 
+                de esta noche con los Game Awards siempre abundan los rumores, 
+                aunque éste no está especialmente vinculado con este evento. 
+                Hablamos de una información surgida a través de una fuente de 
+                NeoGAF que ha recibido la aprobación de los moderadores, ya que 
+                como el lector ya sabrá ahí no se publican rumores que no tengan
+                 un mínimo de base.
+
+              Se trata, en concreto, del usuario NoLoveForFailWheelDrive, que ha
+               aireado su contacto con un miembro interno del personal de 
+               Rockstar que le permite asegurar la existencia ya en desarrollo 
+               de Red Dead Redemption 2.
+
+              El juego, según él, estaría previsto para PlayStation 4 y Xbox 
+              One, y estaría caracterizado por implementar una modalidad 
+              cooperativa a la que sus responsables estarían prestando mucha 
+              atención.
+
+              Como es costumbre recomendamos cierta cautela con este tipo de 
+              rumores, aunque cuando tienen una cierta base como es el de este 
+              caso, nos vemos obligados a reflejarlos.', 4,
+              to_timestamp('05 12 2014', 'DD MM YYYY')),
+              ('Take Two sugiere que tendremos una nueva entrega de Red Dead 
+                en el futuro',
+              'Red Dead Redemption ha resultado ser sumamente rentable y exitoso
+               para Take 2, pero curiosamente, a fecha de hoy, no se tiene 
+               constancia oficial del desarrollo de una nueva entrega de esta 
+               franquicia.
+
+              Durante la conferencia de analistas Cowen & Company, ha estado 
+              presente el director general de Take 2, Strauss Zelnick, hablando 
+              de franquicias permanentes de la empresa, dejando la puerta 
+              abierta al desarrollo de una nueva entrega de Red Dead.
+
+              "Hemos lanzado una nueva franquicia de éxito cada año, y me 
+              gustaría seguir haciendo lo mismo porque hablo de franquicias 
+              permanentes, pero no todo van a ser sagas permanentes. Una de 
+              nuestras franquicias, de forma eventual, perderá su lustre, 
+              mientras que otras seguirán siendo permanentes", explica.
+
+              El ejecutivo ha nombrado en concreto a las franquicias 
+              Borderlands, GTA y Red Dead como IPs permanentes: "de forma 
+              concreta te puedo decir cuáles son permanentes. Es obvio que 
+              GTA es una de estas franquicias siempre permanentes, y más cuando 
+              sigamos ofreciendo esta increíble calidad. Pero también parece 
+              obvio que Red Dead es otra franquicia permanente, con la misma 
+              salvedad, y también otras como Borderlands o NBA 2K".
+
+              Con la reciente salida de Grand Theft Auto V y el anuncio de 
+              Borderlands: The Pre-Sequel, parecería lógico pensar que el 
+              próximo anuncio de una franquicia permanente podría ser el de 
+              una nueva entrega de Red Dead.', 4,
+              to_timestamp('30 05 2014', 'DD MM YYYY'));
 -------------------------------------------------------------------FIN NOTICIAS
 
 -------------------------------------------------------------------VALIDACIONES

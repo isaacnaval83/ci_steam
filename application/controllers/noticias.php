@@ -44,7 +44,7 @@ class Noticias extends CI_Controller {
       }
   }
 
-  public function ver_noticias_juegos(){
+  public function ver_noticias_juegos($id = NULL){
     if($this->input->post('buscar')){
       $nombre = $this->input->post('juego');
       $juegos = $this->Juego->juegos_segun_nombre($nombre);
@@ -53,16 +53,26 @@ class Noticias extends CI_Controller {
         $nomatches = $nombre;
         redirect('noticias/index/'.$nomatches);
       }
-      
-      var_dump($juegos); die();
 
-      foreach($juegos as $juego){
-        $data['noticias'] = $this->Noticia->por_juego($juego['id']);
-      }
+      if(count($juegos) > 1){
+        $data['juegos'] = $juegos;
+        $this->load->view('noticias/resultados', $data);
+      }else{
+        foreach($juegos as $juego){
+          $noticias[] = $this->Noticia->por_juego($juego['id']);
+        }
 
-      var_dump($data); die();
+      $data['noticias'] = $noticias;
 
-      $this->load->view('noticias/resultados', $data);  
+      $this->load->view('noticias/resultados', $data); 
+      } 
+    }
+
+    if($id != NULL){
+      $noticias = $this->Noticia->por_juego($id);
+      $data['noticias'] = $noticias;
+
+      $this->load->view('noticias/resultados', $data);
     }
   }
 }
