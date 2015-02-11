@@ -6,11 +6,21 @@ class Juego extends CI_Model
     public function extraer_juegos(){
 
         //$res=$this->db->query("select * from juegos");
-        $res=$this->db->select('*')->from('juegos')->get();
+       // $res=$this->db->select('*')->from('juegos')->get();
+       /* $res=$this->db->query("
+            select j.id, j.titulo, j.descripcion, j.fecha_lanzamiento, j.precio, j.destacado,
+                    so.nombre_so
+            from juegos as j, sistemas_operativos as so;
+            ");
+        */
+        $res=$this->db->query("
+            select j.id, j.titulo, j.descripcion, j.fecha_lanzamiento, j.precio, j.destacado,
+                    des.nombre_desarrollador, mul.url
+            from juegos as j, desarrolladores as des, multimedia as mul
+            where des.id=j.desarrollador_id and j.id=mul.juegos_id;
+        ");
         
-        //return ($res->num_rows()>0) ? $res->row_array() : FALSE;
         return ($res->num_rows()>0) ? $res->result_array() : FALSE;
-        //return ($res->num_rows()>0) ? $res : FALSE;
 
     }
     public function juego_por_id($id)
@@ -25,7 +35,9 @@ class Juego extends CI_Model
 
     public function sistema_operativo_por_id_juego($id)
     {
-    	$res = $this->db->query("select so.nombre_so from juegos j, juegos_so js, sistemas_operativos so where j.id=js.juegos_id and js.so_id=so.id and j.id = ?", array($id));
+    	$res = $this->db->query("select so.nombre_so 
+                                from juegos j, juegos_so js, sistemas_operativos so 
+                                where j.id=js.juegos_id and js.so_id=so.id and j.id = ?", array($id));
   
                                       
         return ($res->num_rows() > 0) ? $res->result_array() : FALSE;

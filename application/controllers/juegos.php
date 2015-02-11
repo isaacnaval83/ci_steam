@@ -5,13 +5,21 @@ class Juegos extends CI_Controller {
     public function index()
     {
         $data['juegos']=$this->Juego->extraer_juegos();
-       // var_dump($data['juegos']);
+        //var_dump($data['juegos'][0]['id']);
+       
+        //sistema_operativo_por_id_juego();
+        foreach ($data['juegos'] as $fila) {
+            //$fila['id']
+            //var_dump($fila['id']);
+            
+        }
+       
         if ($data!=FALSE) {
            $this->load->view('juegos/index.php',$data);
         }else{
             echo "Error";
         }
-    }
+    } 
 
 
     public function ver($id = null)

@@ -7,28 +7,16 @@
 <body>
 	<p>INDEX</p>
 
-	<?php
-		//var_dump($juegos);
-	/*foreach ($juegos as $juego => $value) {
-		//echo $juego['titulo'];
-		//echo $value;
-		echo "<br>";
-		echo $juego;
-		echo ": ";
-		//echo $juegos[$juego];
-		//echo $value;
-	}*/
-	?>
-
 	<?php foreach ($juegos as $juego):?>
-		<p><?= $juego['id'] ?></p>
-		<p><?= $juego['titulo'] ?></p>
-		<p><?= $juego['desarrollador_id'] ?></p>
-		<p><?= $juego['caratula'] ?></p>
-		<p><?= $juego['descripcion'] ?></p>
-		<p><?= $juego['fecha_lanzamiento'] ?></p>
-		<p><?= $juego['precio'] ?></p>
-		<p><?= $juego['destacado'] ?></p>
+		<p>Id: <?= $juego['id'] ?></p>
+		<p>Titulo: <?= $juego['titulo'] ?></p>
+		<!--caratula-->
+		<p>Description: <?= $juego['descripcion'] ?></p>
+		<p>Lanzamiento: <?= $juego['fecha_lanzamiento'] ?></p>
+		<p>Precio: <?= $juego['precio'] ?></p>
+		<p>Destacado: <?= $juego['destacado'] ?></p>
+		<p>Desarrollador: <?= $juego['nombre_desarrollador'] ?></p>
+		<img src="<?= $juego['url'] ?>">
 	<?php endforeach;?>
 </body>
 </html>
