@@ -18,18 +18,13 @@ class Juegos extends CI_Controller {
     {
         $data['juego'] = $this->Juego->juego_por_id($id);
         $data['so'] = $this->Juego->sistema_operativo_por_id_juego($id);
-        if ($data != FALSE)
-        {
-            $this->load->view('juegos/verjuego', $data);
-        }
-        else
-        {
-            echo 'numero no valido';
-        }
-    }
 
-    public function comentar()
-    {
+        if ($this->session->userdata('usuario'))
+        {
+            $data['usuario'] = $this->session->userdata('usuario');
+            $data['id'] = $this->session->userdata('id');
+        }
+        
         if ($this->input->post('comentar'))
         {
             $texto_comentario = $this->input->post('texto_noticia');
@@ -52,21 +47,37 @@ class Juegos extends CI_Controller {
 
             if ($this->form_validation->run() == FALSE)
             {
-                $this->load->view('juegos/comentar');
+                $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
             }
             else
             {
                 if ($this->Comentario->crear_comentario($texto_comentario, $juegos_id, $usuarios_id) === FALSE){
                     $data['error'] = "Error: No se ha podico comentar";
 
-                    $this->load->view('juegos/comentar',$data);
+                    $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
                 }
             }
         }
         else
         {
-            $this->load->view('juegos/comentar');
+            $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
         }
+
+        
+
+        if ($data != FALSE)
+        {
+            $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
+        }
+        else
+        {
+            echo 'numero no valido';
+        }
+    }
+
+    public function comentar()
+    {
+        
     }
 
     public function comprar($id)

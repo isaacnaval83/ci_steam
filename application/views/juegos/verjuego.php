@@ -1,93 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Document</title>
-		<style type="text/css">
-		*{
-			padding: 0px;
-			margin: 0px;
-		}
 
-		html{
-			
-		}
-		body{
-			margin: 15px;
-			text-align: center;
-			justify-content: center;
-			background-color: #0C3785;
-			color: white;
-			
+	<h2><?= $juego['titulo'] ?></h2>
 
-
-		}
-
-		section{
-			display: flex;
-			-webkit-flex-direction: row;
-			-moz-flex-direction: row;
-			-ms-flex-direction: row;
-			-o-flex-direction: row;
-			flex-direction: row;
-			justify-content: center;
-		}
-		header{
-			height: 60px;
-			
-			text-align: center;
-			
-			font-size: 50px;
-			display: flex;
-			-webkit-flex-direction: column;
-			-moz-flex-direction: column;
-			-ms-flex-direction: column;
-			-o-flex-direction: column;
-			flex-direction: column;
-			margin-bottom: 25px;
-		}
-		div{
-			text-align: left;
-			color: black;
-			background-color: #BEB2B2;
-
-		}
-
-		label{
-			font-weight: bold;
-		}
-		img{
-			height: 300px;
-		}
-
-		</style>
-	</head>
-	<body>
-		<header><?= $juego['titulo'] ?></header>
-
-		<section>
+	<section>
 			<img src="<?= $juego['url'] ?>">
 			<div>
-				<label> Descripcion: </label>
-					<?= $juego['descripcion'] ?><br/>
-				<label> Fecha de lanzamiento: </label>
-					<?= $juego['fecha_lanzamiento'] ?><br/>
-				<label> Precio: </label>
-					<?= $juego['precio'] ?><br/>
-
-				<label> Sistema Operativo disponible: </label>
-					<?php foreach ($so as $item):?>
-						<?= $item['nombre_so'] ?>
-					<?php endforeach;?><br/>
-				<label> Desarrollador:  </label>
-					<?= $juego['nombre_desarrollador'] ?><br/>
-
+					<label> Descripcion: </label>
+						<?= $juego['descripcion'] ?><br/>
+					<label> Fecha de lanzamiento: </label>
+						<?= $juego['fecha_lanzamiento'] ?><br/>
+					<label> Precio: </label>
+						<?= $juego['precio'] ?><br/>
+					<label> Sistema Operativo disponible: </label>
+						<?php foreach ($so as $item):?>
+							<?= $item['nombre_so'] ?>
+						<?php endforeach;?><br/>
+					<label> Desarrollador:  </label>
+						<?= $juego['nombre_desarrollador'] ?><br/>
 			</div>
+	</section>
+	<section>
+			<?= validation_errors() ?>
+	  
+	    <?php if (isset($error)): ?>
+	      <p style="color:red;"><?= $error ?></p style="color:red;">
+	    <?php endif ?>
 
+		  <?= form_open('juegos/comentar') ?>
+		 	 	<?= form_hidden('id', $id) ?>
+		 	 	<?= form_hidden('juego_id', $juego['id']) ?>
+	      <?= form_label('Comentario:', 'texto_comentario') ?>
+	      <?= form_textarea(array('name' => 'texto_comentario', 
+	      											  'cols' => '50', 
+	      											  'rows' => '10', 
+	      											  'maxlength' => '500')) ?><br/>
+	      <?= form_submit('comentar', 'Comentar') ?>
+	    <?= form_close() ?>
 
-		</section>
-	
+	</section>
 	
 		
-	</body>
-</html>
