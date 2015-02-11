@@ -8,11 +8,14 @@ class Home extends CI_Controller {
         {
             $data['usuario_id'] = $this->session->userdata('id');
             $data['biblioteca'] = $this->Usuario->biblioteca($data['usuario_id']);
+            $this->template->set('usuario', $this->session->userdata('usuario'));
         }
 
         $data['juegos'] = $this->Juego->destacados();
         $data['noticias'] = $this->Noticia->ultimas();
 
-        $this->load->view('/home/index', $data);
+        $this->template->set('titulo', 'Inicio');
+        $this->template->load('plantillas/comun', 'home/index', $data);
+        //$this->load->view('/home/index', $data);
     }
 }
