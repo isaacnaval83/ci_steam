@@ -28,9 +28,45 @@ class Juegos extends CI_Controller {
         }
     }
 
-    public function comentar($id)
+    public function comentar()
     {
+        if ($this->input->post('comentar'))
+        {
+            $texto_comentario = $this->input->post('texto_noticia');
+            $juegos_id = $this->input->post('id');
 
+            $reglas = array(
+                         array(
+                          'field' => 'texto_noticia',
+                          'label' => 'Comentario',
+                          'rules' => 'trim|required|max_length[500]'
+                         )
+                      );
+
+            $this->form_validation->set_rules($reglas);
+
+            if ($this->session->userdata('id'))
+            {
+                $data['usuarios_id'] = $this->session->userdata('id');
+            }
+
+            if ($this->form_validation->run() == FALSE)
+            {
+                $this->load->view('juegos/comentar');
+            }
+            else
+            {
+                if ($this->Comentario->crear_comentario($texto_comentario, $juegos_id, $usuarios_id) === FALSE){
+                    $data['error'] = "Error: No se ha podico comentar";
+
+                    $this->load->view('juegos/comentar',$data);
+                }
+            }
+        }
+        else
+        {
+            $this->load->view('juegos/comentar');
+        }
     }
 
     public function comprar($id)
