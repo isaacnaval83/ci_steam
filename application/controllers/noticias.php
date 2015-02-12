@@ -44,6 +44,14 @@ class Noticias extends CI_Controller {
       }
   }
 
+  public function mostrar_juegos_json(){
+    if($this->input->get()){
+      $juegos = $this->Juego->juegos_segun_nombre($this->input->post('nombre'));
+
+      echo json_encode($juegos);
+    }
+  }
+
   public function ver_noticias_juegos($id = NULL){
     if($this->input->post('buscar')){
       $nombre = $this->input->post('juego');
