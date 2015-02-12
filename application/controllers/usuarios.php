@@ -88,6 +88,7 @@ class Usuarios extends CI_Controller {
                     $token = md5(rand());
                     $this->Usuario->meter_en_validaciones($id,$token);
                     $this->enviarCorreo($email);
+                    $this->Usuario->borrar_validacion($id);
                     //select * from usuarios join validaciones_pendientes on usuarios.id = validaciones_pendientes.usuarios_id where usuarios.valido = false;
                     $this->loguear($usuario,$password);
                     redirect("/home/index");
@@ -117,5 +118,6 @@ class Usuarios extends CI_Controller {
         $this->email->send();
 
         echo $this->email->print_debugger();
+
     }
 }

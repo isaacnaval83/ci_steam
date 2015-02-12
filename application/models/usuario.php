@@ -40,4 +40,9 @@ class Usuario extends CI_Model
     }
 
   
+    public function borrar_validacion($id){
+        $res = $this->db->query("delete from validaciones_pendientes
+                                 where usuarios_id = ?",
+                                 array($id));
+    }  
 }
