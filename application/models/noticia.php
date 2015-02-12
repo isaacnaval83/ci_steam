@@ -24,7 +24,7 @@ class Noticia extends CI_Model
     {
         $res = $this->db->where('id', $id)->get('noticias');
                                       
-        return ($res->num_rows() > 0) ? $res->result_array() : FALSE;
+        return ($res->num_rows() > 0) ? $res->row_array() : FALSE;
     }
 
     public function por_juego($id){

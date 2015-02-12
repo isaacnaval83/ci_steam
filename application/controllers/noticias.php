@@ -31,13 +31,13 @@ class Noticias extends CI_Controller {
 
   public function ver($id)
   {
-	if ($id == NULL)
-  {
-		redirect('noticias/index');
-	}
+  	if ($id == NULL)
+    {
+  		redirect('noticias/index');
+  	}
 
-	$data = $this->Noticia->buscar_noticias_por_id($id);
-      
+  	$data = $this->Noticia->buscar_noticias_por_id($id);
+
       if ($data != FALSE) 
       {
           $this->load->view('noticias/ver', $data);

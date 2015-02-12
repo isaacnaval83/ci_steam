@@ -33,52 +33,13 @@ class Juegos extends CI_Controller {
     {
         $data['juego'] = $this->Juego->juego_por_id($id);
         $data['so'] = $this->Juego->sistema_operativo_por_id_juego($id);
+        $data['comentarios'] = $this->Comentario->ver_comentarios($id);
 
         if ($this->session->userdata('usuario'))
         {
             $data['usuario'] = $this->session->userdata('usuario');
             $data['id'] = $this->session->userdata('id');
         }
-        
-        if ($this->input->post('comentar'))
-        {
-            $texto_comentario = $this->input->post('texto_noticia');
-            $juegos_id = $this->input->post('id');
-
-            $reglas = array(
-                         array(
-                          'field' => 'texto_noticia',
-                          'label' => 'Comentario',
-                          'rules' => 'trim|required|max_length[500]'
-                         )
-                      );
-
-            $this->form_validation->set_rules($reglas);
-
-            if ($this->session->userdata('id'))
-            {
-                $data['usuarios_id'] = $this->session->userdata('id');
-            }
-
-            if ($this->form_validation->run() == FALSE)
-            {
-                $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
-            }
-            else
-            {
-                if ($this->Comentario->crear_comentario($texto_comentario, $juegos_id, $usuarios_id) === FALSE){
-                    $data['error'] = "Error: No se ha podico comentar";
-
-                    $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
-                }
-            }
-        }
-        else
-        {
-            $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
-        }
-
-        
 
         if ($data != FALSE)
         {
@@ -88,11 +49,31 @@ class Juegos extends CI_Controller {
         {
             echo 'numero no valido';
         }
+        
     }
 
     public function comentar()
     {
-        
+        $texto_comentario = $this->input->post('texto_comentario');
+        $juego_id = $this->input->post('juego_id');
+        $usuarios_id = $this->session->userdata('id');
+
+        $reglas = array(
+                     array(
+                      'field' => 'texto_comentario',
+                      'label' => 'Comentario',
+                      'rules' => 'trim|required|max_length[500]'
+                     )
+                  );
+
+        $this->form_validation->set_rules($reglas);
+
+        if ($this->form_validation->run() != FALSE)
+        {
+            $this->Comentario->crear_comentario($texto_comentario, $juego_id, $usuarios_id);
+        }
+
+        redirect('juegos/ver/'.$juego_id);
     }
 
     public function comprar($id)
