@@ -8,12 +8,19 @@ class Juegos extends CI_Controller {
         //var_dump($data['juegos'][0]['id']);
        
         //sistema_operativo_por_id_juego();
+        $auxiliar1 = array();
+        $auxiliar2 = array();
         foreach ($data['juegos'] as $fila) {
-            //$fila['id']
-            //var_dump($fila['id']);
-            
+
+            $res2=$this->Juego->sistema_operativo_por_id_juego($fila['id']);
+            array_push($auxiliar1, $res2);
+            $res3=$this->Juego->generos_por_id($fila['id']);
+            array_push($auxiliar2, $res3);
+
         }
-       
+        $data['so']=$auxiliar1;
+        $data['generos']=$auxiliar2;
+       //var_dump($data['so'][0][1]);
         if ($data!=FALSE) {
            $this->load->view('juegos/index.php',$data);
         }else{

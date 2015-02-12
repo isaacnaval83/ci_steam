@@ -23,6 +23,12 @@ class Juego extends CI_Model
         return ($res->num_rows()>0) ? $res->result_array() : FALSE;
 
     }
+    public function generos_por_id($id){
+        $res=$this->db->query("select g.nombre_genero
+                                from generos as g, generos_juegos as gj
+                                where g.id=gj.generos_id and gj.juegos_id= ?",array($id));
+        return ($res->num_rows() > 0) ? $res->result_array() : FALSE;
+    }
     public function juego_por_id($id)
     {
 
