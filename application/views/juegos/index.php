@@ -30,6 +30,15 @@
 				<span><?= $genero['nombre_genero'] ?></span>
 			<?php endforeach;?>
 		</p>
+		<p>Comentarios: 
+			<!--rellena todos los comentarios para un juego-->
+			<?php foreach ($comentarios[$fila] as $comentario):?>
+				<span><?= $comentario['juegos_id'] ?></span>
+				<span><?= $comentario['texto_comentario'] ?></span>
+			<?php endforeach;?>
+		</p>
+
+
 		<?php $fila++; ?>
 		<img src="<?= $juego['url'] ?>">
 
