@@ -31,19 +31,43 @@ class Juegos extends CI_Controller {
 
     public function ver($id = null)
     {
-        $data['juego'] = $this->Juego->juego_por_id($id);
-        $data['so'] = $this->Juego->sistema_operativo_por_id_juego($id);
-        $data['comentarios'] = $this->Comentario->ver_comentarios($id);
-
-        if ($this->session->userdata('usuario'))
+        if ($this->Juego->juego_por_id($id) != FALSE)
         {
-            $data['usuario'] = $this->session->userdata('usuario');
-            $data['id'] = $this->session->userdata('id');
-        }
+            $data['juego'] = $this->Juego->juego_por_id($id);
+            $data['so'] = $this->Juego->sistema_operativo_por_id_juego($id);
+            //$data['comentarios'] = $this->Comentario->ver_comentarios($id);
 
-        if ($data != FALSE)
-        {
+            if ($this->session->userdata('usuario'))
+            {
+                $data['usuario'] = $this->session->userdata('usuario');
+                $data['id'] = $this->session->userdata('id');
+            }
+
+            if ($this->input->post('comentar'))
+            {
+                $texto_comentario = $this->input->post('texto_comentario');
+                //$juego_id = $this->input->post('juego_id');
+                //$usuarios_id = $this->session->userdata('id');
+
+                $reglas = array(
+                             array(
+                              'field' => 'texto_comentario',
+                              'label' => 'Comentario',
+                              'rules' => 'trim|required|max_length[500]'
+                             )
+                          );
+
+                $this->form_validation->set_rules($reglas);
+
+                if ($this->form_validation->run() != FALSE)
+                {
+                    //$this->Comentario->crear_comentario($texto_comentario, $juego_id, $usuarios_id);
+                    $this->Comentario->crear_comentario($texto_comentario, $id, $data['id']);
+                }
+            }
+            $data['comentarios'] = $this->Comentario->ver_comentarios($id);
             $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
+            
         }
         else
         {
@@ -52,7 +76,7 @@ class Juegos extends CI_Controller {
         
     }
 
-    public function comentar()
+   /* public function comentar()
     {
         $texto_comentario = $this->input->post('texto_comentario');
         $juego_id = $this->input->post('juego_id');
@@ -72,9 +96,14 @@ class Juegos extends CI_Controller {
         {
             $this->Comentario->crear_comentario($texto_comentario, $juego_id, $usuarios_id);
         }
+       /* else
+        {
+            $this->ver($juego_id);
+        }*/
 
-        redirect('juegos/ver/'.$juego_id);
-    }
+        /*redirect('juegos/ver/'.$juego_id);
+        //redirect('juegos/'.$juego_id);
+    }*/
 
     public function comprar($id)
     {

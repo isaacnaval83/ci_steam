@@ -23,8 +23,8 @@
 		<section>
 				<?= validation_errors() ?>
 
-			  <?= form_open('juegos/comentar') ?>
-			 	 	<?= form_hidden('juego_id', $juego['id']) ?>
+			  <?= form_open('juegos/ver/'.$juego['id']) ?>
+			 	  
 		      <?= form_label('Comentario:', 'texto_comentario') ?>
 		      <?= form_textarea(array('name' => 'texto_comentario', 
 		      											  'cols' => '50', 
