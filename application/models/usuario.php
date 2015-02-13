@@ -58,5 +58,7 @@ class Usuario extends CI_Model
                                  from validaciones_pendientes
                                   where usuarios_id = ?",
                                   array($id));
+
+        return $res->row()->token;
     }
 }

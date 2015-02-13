@@ -84,19 +84,14 @@ class Usuarios extends CI_Controller {
                     $this->load->view('usuarios/singup',$data);
                 }
                 else{
+                    $this->session->set_userdata('usuario', $usuario);
+                    $this->session->set_userdata('password',$password);
                     $id = $this->Usuario->id_segun_usuario_password($usuario,$password);
                     $token = md5(rand());
                     $this->Usuario->meter_en_validaciones($id,$token);
-                    $this->enviarCorreo($email,$token);
-                    $token_usuario = $this->Usuario->obtener_token($id);
-
-                    if ($this->validar($token,$token_usuario) === TRUE){
-                        $this->Usuario->borrar_validacion($id);
-                        $this->Usuario->cambiar_el_valor_de_valido($id);                        
-                    }
-                    //select * from usuarios join validaciones_pendientes on usuarios.id = validaciones_pendientes.usuarios_id where usuarios.valido = false;
-                    $this->loguear($usuario,$password);
-                    redirect("/home/index");
+                    $this->enviarCorreo($email,$id,$token);
+                    
+                    redirect("usuarios/login");   
                 }
             }
         }
@@ -107,16 +102,23 @@ class Usuarios extends CI_Controller {
        
     }
 
-    public function validar($token,$token_usuario){        
+    public function validar($id,$token){
+        $token_usuario = $this->Usuario->obtener_token($id);
+        
         if ($token === $token_usuario){
-            return TRUE;
+            $this->Usuario->borrar_validacion($id);
+            $this->Usuario->cambiar_el_valor_de_valido($id);
+            $usuario = $this->session->userdata('usuario');
+            $password = $this->session->userdata('password');
+            $this->loguear($usuario,$password);
+            redirect("/home/index");
         }
         else{
-            return FALSE;
+            $this->load->view('usuarios/login');
         }
     }
 
-    public function enviarCorreo($email,$token){
+    public function enviarCorreo($email,$id,$token){
         $config['protocol'] = 'sendmail';
         $config['mailtype'] = 'html';
         $config['charset'] = 'utf-8';
@@ -128,7 +130,7 @@ class Usuarios extends CI_Controller {
         $this->email->from('iesdonana@gmail.com');
         $this->email->to($email);
         $this->email->subject('Prueba');
-        $this->email->message('<a href="http://localhost/ci_steam/index.php/usuarios/validar/'.$token.'">Confirmar validacion</a>');
+        $this->email->message('<a href="http://localhost/ci_steam/index.php/usuarios/validar/'.$id.'/'.$token.'">Confirmar validacion</a>');
         $this->email->send();
 
         echo $this->email->print_debugger();
