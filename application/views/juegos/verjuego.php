@@ -38,7 +38,7 @@
 	<?php endif;?>
 
 	<?php if (empty($comentarios)):?>
-		<p>8===D</p>
+		<p>No existen aun comentarios para este juego</p>
 	<?php else:?>
 		<?php foreach($comentarios as $comentario) { ?>
 	      <article>
