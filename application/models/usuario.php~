@@ -26,6 +26,7 @@ class Usuario extends CI_Model
     							 array($id, $token));
     }
 
+<<<<<<< HEAD
     public function biblioteca($usuario_id)
     {
         $res = $this->db->query("select j.id, titulo, url, descripcion, 
@@ -40,23 +41,11 @@ class Usuario extends CI_Model
     }
 
   
+=======
     public function borrar_validacion($id){
         $res = $this->db->query("delete from validaciones_pendientes
                                  where usuarios_id = ?",
                                  array($id));
     }  
-
-    public function cambiar_el_valor_de_valido($id){
-        $res = $this->db->query("update usuarios
-                                 set valido = true
-                                 where id = ?",
-                                 array($id));
-    }
-
-    public function obtener_token($id){
-        $res = $this->db->query("select token 
-                                 from validaciones_pendientes
-                                  where usuarios_id = ?",
-                                  array($id));
-    }
+>>>>>>> enviar correo de validacion
 }
