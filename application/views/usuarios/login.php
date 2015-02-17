@@ -14,7 +14,6 @@
       <?= form_input('usuario') ?><br/>
       <?= form_label('Contraseña:', 'password') ?>
       <?= form_password('password') ?><br/>
-      <a href="http://localhost/ci_steam/index.php/usuarios/olvida_contrasena">He olvidado la contraseña</a><br/>
       <?= form_submit('login', 'Entrar') ?>
     <?= form_close() ?>
 
