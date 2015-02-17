@@ -26,7 +26,8 @@ class Usuarios extends CI_Controller {
 
     	if ($id !== FALSE){
     		$this->session->set_userdata('usuario', $usuario);
-    		$this->session->set_userdata('id',$id);
+            $this->session->set_userdata('id',$id);
+    		$this->session->set_userdata('form_nserie','');
     		return TRUE; 
     	}
     	else{

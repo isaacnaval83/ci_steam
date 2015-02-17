@@ -48,25 +48,31 @@ class Juegos extends CI_Controller {
 
             if ($this->input->post('comentar'))
             {
-                $texto_comentario = $this->input->post('texto_comentario');
-                //$juego_id = $this->input->post('juego_id');
-                //$usuarios_id = $this->session->userdata('id');
+                $nserie = $this->session->userdata('form_nserie');
 
-                $reglas = array(
-                             array(
-                              'field' => 'texto_comentario',
-                              'label' => 'Comentario',
-                              'rules' => 'trim|required|max_length[500]'
-                             )
-                          );
+                //var_dump($nserie);
+                //var_dump($this->input->post('nserie')); die();
 
-                $this->form_validation->set_rules($reglas);
+                if ($this->input->post('nserie') != $nserie) {
+                    $this->session->set_userdata('form_nserie', $this->input->post('nserie'));
+                    $texto_comentario = $this->input->post('texto_comentario');
 
-                if ($this->form_validation->run() != FALSE)
-                {
-                    //$this->Comentario->crear_comentario($texto_comentario, $juego_id, $usuarios_id);
-                    $this->Comentario->crear_comentario($texto_comentario, $id, $data['id']);
-                }
+                    $reglas = array(
+                                 array(
+                                  'field' => 'texto_comentario',
+                                  'label' => 'Comentario',
+                                  'rules' => 'trim|required|max_length[500]'
+                                 )
+                              );
+
+                    $this->form_validation->set_rules($reglas);
+
+                    if ($this->form_validation->run() != FALSE)
+                    {
+                        //$this->Comentario->crear_comentario($texto_comentario, $juego_id, $usuarios_id);
+                        $this->Comentario->crear_comentario($texto_comentario, $id, $data['id']);
+                    }
+                }                
             }
             $data['comentarios'] = $this->Comentario->ver_comentarios($id);
             $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
