@@ -137,4 +137,26 @@ class Usuarios extends CI_Controller {
         echo $this->email->print_debugger();
 
     }
+
+    public function olvida_contrasena(){
+        //$this->load->view("usuarios/email");
+    }
+
+    public function enviar_correo_contrasena(){
+        $config['protocol'] = 'sendmail';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['validate'] = FALSE;
+
+        $this->load->library('email',$config);
+        $this->email->set_newline('\r\n');
+
+        $this->email->from('iesdonana@gmail.com');
+        $this->email->to($email);
+        $this->email->subject('Prueba');
+        $this->email->message('<a href="http://localhost/ci_steam/index.php/usuarios/cambiar_contrasena">Confirmar validacion</a>');
+        $this->email->send();
+
+        echo $this->email->print_debugger();
+    }
 }
