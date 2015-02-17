@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?=$titulo?></title>
-    <link rel="stylesheet" type="text/css" href="/ci_steam/css/estilo.css">
+    <?= link_tag('css/estilo.css') ?>
 </head>
 <body>
     <header>

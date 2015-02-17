@@ -75,6 +75,7 @@ class Juegos extends CI_Controller {
                 }                
             }
             $data['comentarios'] = $this->Comentario->ver_comentarios($id);
+            $this->template->set('titulo', 'Juego');
             $this->template->load('plantillas/comun', 'juegos/verjuego', $data);
             
         }
