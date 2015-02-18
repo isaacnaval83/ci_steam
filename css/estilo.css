@@ -80,6 +80,16 @@ header div p
     box-shadow: inset #6378C5 0 0 30px;
 }
 
+.precio
+{
+    width: 120px;
+    padding: 15px;
+    background-color: #DC940C;
+    position: relative;
+    left:530px;
+    box-shadow: #000 5px 5px 10px;
+}
+
 .listanoticias
 {
     flex: 1 1;

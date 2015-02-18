@@ -73,11 +73,11 @@ insert into generos_juegos(generos_id, juegos_id)
 
 ---------------------------------------------------------------------MULTIMEDIA
 insert into multimedia(url, juegos_id)
-        values('/ci_steam/images/juegos/gtavcaratula.png', 1),
-              ('/ci_steam/images/juegos/skyrimcaratula.png', 2),
-              ('/ci_steam/images/juegos/candycrushcaratula.png', 3),
-              ('/ci_steam/images/juegos/reddeadredemtioncaratula.png', 4),
-              ('/ci_steam/images/juegos/farcrycaratula.png', 5);
+        values('images/juegos/gtavcaratula.png', 1),
+              ('images/juegos/skyrimcaratula.png', 2),
+              ('images/juegos/candycrushcaratula.png', 3),
+              ('images/juegos/reddeadredemtioncaratula.png', 4),
+              ('images/juegos/farcrycaratula.png', 5);
 -----------------------------------------------------------------FIN MULTIMEDIA
 
 ------------------------------------------------------------------- COMENTARIOS

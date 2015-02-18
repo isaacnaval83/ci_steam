@@ -2,11 +2,11 @@
     <h2>Juegos destacados</h2>
     <?php foreach ($juegos as $juego):?>
         <article class="lista">
-            <img src="<?= $juego['url'] ?>">
+            <?= anchor('juegos/ver/'.$juego['id'], img($juego['url'])) ?>
             <div class="info">
-                <h3><?= $juego['titulo'] ?></h3>
+                <?= anchor('juegos/ver/'.$juego['id'], '<h3>'.$juego['titulo'].'</h3>') ?>
                 <p><?= $juego['descripcion'] ?></p>
-                <div class="precio"><?= $juego['precio'] ?></div>
+                <div class="precio"><?= $juego['precio'] ?><?= anchor('juegos/comprar/'.$juego['id'], ' Comprar') ?></div>
             </div>
         </article>
     <?php endforeach;?>
