@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    <h1><?= $cabecera ?></h1>
-    <p><?= $texto_noticia ?></p>
-    <p>Fecha de la noticia: <?= $fecha ?></p>
+<h1><?= $cabecera ?></h1>
+<p><?= $texto_noticia ?></p>
+<p>Fecha de la noticia: <?= $fecha ?></p>
 
-    <div><?= anchor("noticias", "Volver") ?></div>
-
-  </body>
-</html>
-
+<div><?= anchor("noticias", "Volver") ?></div>

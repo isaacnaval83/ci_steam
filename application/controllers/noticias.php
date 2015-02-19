@@ -5,6 +5,19 @@ class Noticias extends CI_Controller {
   public function index($nomatches = NULL){
     $noticias = $this->Noticia->todas();
 
+    $data['noticias'] = $this->recortar_noticias($noticias);
+
+    if($nomatches != NULL){
+      $data['nomatches'] = $nomatches;
+    }
+
+    $this->template->set('titulo', 'Noticias');
+    $this->template->load('plantillas/comun', 'noticias/index', $data);
+
+    //$this->load->view('/noticias/index', $data);
+  }
+
+  private function recortar_noticias($noticias){
     for($i = 0; $i < count($noticias); $i++){
       if(strlen($noticias[$i]['texto_noticia']) > 200){
         $noticias[$i]['texto_noticia'] = substr($noticias[$i]['texto_noticia'],
@@ -13,21 +26,17 @@ class Noticias extends CI_Controller {
       }
     }
 
-    $data['noticias'] = $noticias;
+    return $noticias;
+
+    /*$data['noticias'] = $noticias;
     
     foreach ($data['noticias'] as $key => $value){
       if(strlen($value['texto_noticia']) > 200){
         $value['texto_noticia'] = substr($value['texto_noticia'], 0, 500);
         $value['texto_noticia'] .= '...';
       }
-    }
-
-    if($nomatches != NULL){
-      $data['nomatches'] = $nomatches;
-    }
-
-    $this->load->view('/noticias/index', $data);
-  } 
+    }*/
+  }
 
   public function ver($id)
   {
@@ -40,7 +49,9 @@ class Noticias extends CI_Controller {
 
       if ($data != FALSE) 
       {
-          $this->load->view('noticias/ver', $data);
+        $this->template->set('titulo', 'Noticias');
+        $this->template->load('plantillas/comun', 'noticias/ver', $data);
+        //$this->load->view('noticias/ver', $data);
       }
   }
 
@@ -64,15 +75,21 @@ class Noticias extends CI_Controller {
 
       if(count($juegos) > 1){
         $data['juegos'] = $juegos;
-        $this->load->view('noticias/resultados', $data);
+
+        $this->template->set('titulo', 'Resultado de Busqueda');
+        $this->template->load('plantillas/comun', 'noticias/resultados', $data);
+        //$this->load->view('noticias/resultados', $data);
       }else{
         foreach($juegos as $juego){
           $noticias = $this->Noticia->por_juego($juego['id']);
         }
 
-      $data['noticias'] = $noticias;
+        $noticias = $this->recortar_noticias($noticias);
+        $data['noticias'] = $noticias;
 
-      $this->load->view('noticias/resultados', $data); 
+        $this->template->set('titulo', 'Resultado de Busqueda');
+        $this->template->load('plantillas/comun', 'noticias/resultados', $data);
+        //$this->load->view('noticias/resultados', $data); 
       } 
     }
 
@@ -80,7 +97,9 @@ class Noticias extends CI_Controller {
       $noticias = $this->Noticia->por_juego($id);
       $data['noticias'] = $noticias;
 
-      $this->load->view('noticias/resultados', $data);
+      $this->template->set('titulo', 'Noticias');
+      $this->template->load('plantillas/comun', 'noticias/resultados', $data);
+      //$this->load->view('noticias/resultados', $data);
     }
   }
 }
