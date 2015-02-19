@@ -2,7 +2,7 @@
     <h2><?= $juego['titulo'] ?></h2>
 
     <section>
-            <img src="<?= $juego['url'] ?>">
+            <?= img($juego['url']) ?>
             <div>
                     <label> Descripcion: </label>
                         <?= $juego['descripcion'] ?><br/>
@@ -17,6 +17,12 @@
                     <label> Desarrollador:  </label>
                         <?= $juego['nombre_desarrollador'] ?><br/>
             </div>
+    </section>
+
+    <section class="screenshots">
+        <?php foreach ($screenshots as $screenshot) { ?>
+            <?= img($screenshot['url']) ?>
+        <?php } ?>
     </section>
 
     <?php if (isset($id)):?>

@@ -80,6 +80,14 @@ header div p
     box-shadow: inset #6378C5 0 0 30px;
 }
 
+.screenshots{
+    padding: 5px;
+}
+
+.screenshots img{
+    width: 20%;
+}
+
 .precio
 {
     width: 120px;

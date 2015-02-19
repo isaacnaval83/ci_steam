@@ -77,7 +77,26 @@ insert into multimedia(url, juegos_id)
               ('images/juegos/skyrimcaratula.png', 2),
               ('images/juegos/candycrushcaratula.png', 3),
               ('images/juegos/reddeadredemtioncaratula.png', 4),
-              ('images/juegos/farcrycaratula.png', 5);
+              ('images/juegos/farcrycaratula.png', 5),
+              ('images/juegos/gtav/grand_theft_auto_v-2357428.jpg' , 1),
+              ('images/juegos/gtav/grand_theft_auto_v-2357430.jpg' , 1),
+              ('images/juegos/gtav/grand_theft_auto_v-2357432.jpg' , 1),
+              ('images/juegos/gtav/grand_theft_auto_v-2357434.jpg' , 1),
+              ('images/juegos/skyrim/the_elder_scrolls_v-1840196.jpg' , 2),
+              ('images/juegos/skyrim/the_elder_scrolls_v-1840204.jpg' , 2),
+              ('images/juegos/skyrim/the_elder_scrolls_v-1840208.jpg' , 2),
+              ('images/juegos/skyrim/the_elder_scrolls_v-1840210.jpg' , 2),
+              ('images/juegos/candycrush/candy_crush_saga-2329315.jpg' , 3),
+              ('images/juegos/candycrush/candy_crush_saga-2329317.jpg' , 3),
+              ('images/juegos/candycrush/candy_crush_saga-2329319.jpg' , 3),
+              ('images/juegos/reddeadredemption/red_dead_redemption-1269228.jpg', 4),
+              ('images/juegos/reddeadredemption/red_dead_redemption-1269230.jpg', 4),
+              ('images/juegos/reddeadredemption/red_dead_redemption-1269232.jpg', 4),
+              ('images/juegos/reddeadredemption/red_dead_redemption-1269234.jpg', 4),
+              ('images/juegos/farcry/far_cry_4-2657361.jpg' , 5),
+              ('images/juegos/farcry/far_cry_4-2657363.jpg' , 5),
+              ('images/juegos/farcry/far_cry_4-2657367.jpg' , 5),
+              ('images/juegos/farcry/far_cry_4-2657369.jpg' , 5);
 -----------------------------------------------------------------FIN MULTIMEDIA
 
 ------------------------------------------------------------------- COMENTARIOS

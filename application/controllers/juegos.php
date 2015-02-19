@@ -37,6 +37,8 @@ class Juegos extends CI_Controller {
         if ($this->Juego->juego_por_id($id) != FALSE)
         {
             $data['juego'] = $this->Juego->juego_por_id($id);
+
+            $data['screenshots']=$this->Juego->screens_por_id($id);
             $data['so'] = $this->Juego->sistema_operativo_por_id_juego($id);
             //$data['comentarios'] = $this->Comentario->ver_comentarios($id);
 

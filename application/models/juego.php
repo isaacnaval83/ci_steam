@@ -55,6 +55,15 @@ class Juego extends CI_Model
         return ($res->num_rows() > 0) ? $res->result_array() : FALSE;
     }  
 
+    public function screens_por_id($id){
+        $screens = $this->db->query("select url
+                                       from multimedia m join juegos j on j.id = m.juegos_id
+                                      where juegos_id = ? 
+                                    and j.caratula != m.id", [$id]);
+
+        return $screens->result_array();
+    }
+
     public function juegos_segun_nombre($nombre)
     {
       $nombre = '%'.$nombre.'%';      
