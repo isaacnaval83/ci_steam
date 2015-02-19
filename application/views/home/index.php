@@ -1,3 +1,27 @@
+<script type="text/javascript" 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+</script>
+
+
+<script type="text/javascript">
+
+    function anadir_compra(id, titulo, precio)
+    {
+        $.post('index.php/juegos/comprar/',
+                {'<?= $this->security->get_csrf_token_name(); ?>' : 
+                 '<?= $this->security->get_csrf_hash(); ?>',
+                 'id': id,
+                 'titulo': titulo,
+                 'precio': precio}, 
+                function(respuesta) {
+            alert(respuesta);
+        });
+    }
+</script>
+
+
+
+
 <section class="cajones">
     <h2>Juegos destacados</h2>
     <?php foreach ($juegos as $juego):?>
@@ -6,7 +30,9 @@
             <div class="info">
                 <?= anchor('juegos/ver/'.$juego['id'], '<h3>'.$juego['titulo'].'</h3>') ?>
                 <p><?= $juego['descripcion'] ?></p>
-                <div class="precio"><?= $juego['precio'] ?><?= anchor('juegos/comprar/'.$juego['id'], ' Comprar') ?></div>
+                <div class="precio" onclick="anadir_compra('<?= $juego['id']?>', '<?=$juego['titulo']?>', '<?=$juego['precio']?>' )">
+                    <?= $juego['precio'] ?> Comprar
+                </div>
             </div>
         </article>
     <?php endforeach;?>
