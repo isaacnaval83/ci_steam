@@ -82,7 +82,7 @@ class Juegos extends CI_Controller {
         }        
     }
 
-    public function comprar()
+    public function anadir_compra()
     {
         $data = array(
                'id'    => $this->input->post('id'),
@@ -96,5 +96,11 @@ class Juegos extends CI_Controller {
         $respuesta = count($this->cart->contents());
 
         echo $respuesta;
+    }
+
+    public function comprar()
+    {
+        $this->template->set('titulo', 'Carro');
+        $this->template->load('plantillas/comun', 'juegos/compra');
     }
 }
