@@ -22,6 +22,8 @@ class Juegos extends CI_Controller {
         $data['so']=$auxiliar1;
         $data['generos']=$auxiliar2;
         $data['comentarios']=$auxiliar3;
+        //$data['comentarios']= trim(addslashes($auxiliar3));
+     
         if ($data!=FALSE) {
            $this->load->view('juegos/index.php',$data);
         }else{

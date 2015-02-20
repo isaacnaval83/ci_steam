@@ -31,13 +31,14 @@
 			<?php endforeach;?>
 		</p>
 		
+		
 		<?php 
 		//echo $juego['id'];
 		//var_dump($comentarios[$juego['id']-1][0]['juegos_id']);
 		//var_dump($comentarios[$juego['id']-1][$fila]['texto_comentario']);
 		?>
-		<p>Comentarios: 
-			<!--rellena todos los comentarios para un juego-->
+		<!--<p>Comentarios: 
+			<!--rellena todos los comentarios para un juego
 			<?php $con=0; ?>
 			<?php foreach ($comentarios as $comentario):?>
 				<?php
@@ -55,7 +56,7 @@
 				
 			<?php $con++; ?>	
 			<?php endforeach;?>
-		</p>
+		</p>-->
 
 
 		<?php $fila++; ?>
