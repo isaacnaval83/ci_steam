@@ -5,14 +5,6 @@ class Juego extends CI_Model
     //funcion que extrae todos los juegos
     public function extraer_juegos(){
 
-        //$res=$this->db->query("select * from juegos");
-       // $res=$this->db->select('*')->from('juegos')->get();
-       /* $res=$this->db->query("
-            select j.id, j.titulo, j.descripcion, j.fecha_lanzamiento, j.precio, j.destacado,
-                    so.nombre_so
-            from juegos as j, sistemas_operativos as so;
-            ");
-        */
         $res=$this->db->query("
             select j.id, j.titulo, j.descripcion, j.fecha_lanzamiento, j.precio, j.destacado,
                     des.nombre_desarrollador, mul.url
@@ -23,9 +15,12 @@ class Juego extends CI_Model
         return ($res->num_rows()>0) ? $res->result_array() : FALSE;
     }
     public function comentarios_por_id_juego($id){
-        $res=$this->db->query("select c.juegos_id, c.texto_comentario
+       /* $res=$this->db->query("select c.juegos_id, c.texto_comentario
                                 from comentarios as c
-                                where c.juegos_id = ?",array($id));
+                                where c.juegos_id = ?",array($id));*/
+         $res=$this->db->query("select c.juegos_id, c.texto_comentario, u.nick
+                                from comentarios as c, usuarios as u
+                                where u.id=c.usuarios_id and c.juegos_id = ?",array($id));
         return ($res->num_rows()>0) ? $res->result_array() : FALSE;
     }
 
